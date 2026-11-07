@@ -1,11 +1,11 @@
 ﻿import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+const isGithubActions = Boolean(process.env.GITHUB_ACTIONS);
 
 const nextConfig: NextConfig = {
   output: "export" as const,
   trailingSlash: true,
-  basePath: isProd ? "/sistemi-e-automazione" : "",
+  basePath: isGithubActions ? "/sistemi-e-automazione" : "",
   images: {
     unoptimized: true,
   },
