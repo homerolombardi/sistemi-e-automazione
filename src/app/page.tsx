@@ -1463,7 +1463,7 @@ export default function MemberPortalPage() {
             setIsVideoEnded(true);
           }}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            isVideoEnded ? "opacity-30" : "opacity-50"
+            isVideoEnded ? "opacity-60" : "opacity-90"
           }`}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/60 to-transparent" />
