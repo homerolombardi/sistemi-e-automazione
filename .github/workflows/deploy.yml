@@ -1,4 +1,4 @@
-name: Publicar Portal no GitHub Pages
+﻿name: Publicar Portal no GitHub Pages
 
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-# Permissões necessárias para publicar no GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -14,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build_and_deploy:
@@ -24,7 +23,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: 1. Baixar código do repositório
+      - name: 1. Baixar codigo do repositorio
         uses: actions/checkout@v4
 
       - name: 2. Configurar Node.js
@@ -36,13 +35,15 @@ jobs:
       - name: 3. Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: 4. Instalar dependências
+      - name: 4. Instalar dependencias
         run: npm install
 
-      - name: 5. Gerar versão de produção (Pasta out)
+      - name: 5. Gerar versao de producao (Pasta out)
         env:
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
-        run: npm run build
+          NODE_ENV: production
+        run: |
+          npm run build
+          touch ./out/.nojekyll
 
       - name: 6. Empacotar arquivos para o GitHub Pages
         uses: actions/upload-pages-artifact@v3

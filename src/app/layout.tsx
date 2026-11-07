@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,17 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const LOGO_URL =
-  "https://clinicaliviadias.com.br/wp-content/uploads/2026/11/logo2.png";
-
 export const metadata: Metadata = {
   title: "Area Membri • Sistemi e Automazione",
   description: "Area Membri • Il Nostro Quartier Generale",
-  icons: {
-    icon: [{ url: LOGO_URL, type: "image/png" }],
-    shortcut: [LOGO_URL],
-    apple: [{ url: LOGO_URL }],
-  },
 };
 
 export default function RootLayout({
